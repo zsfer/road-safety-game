@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CarsSpawner : MonoBehaviour {
     [SerializeField] GameObject[] _carPrefabs;
+    readonly Queue<GameObject> _carPool = new();
 
     void Start() {
         GameManager.Instance.OnStart += StartSpawning;

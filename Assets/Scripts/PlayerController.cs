@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] float _moveSpeed = 7;
     [SerializeField] float _rotationSpeed = 10;
 
+    [SerializeField] Animator _anim;
 
     CharacterController _cc;
     Vector3 _vel;
@@ -47,6 +48,8 @@ public class PlayerController : MonoBehaviour {
 
         if (_vel.magnitude > 0)
             transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.LookRotation(_vel), _rotationSpeed * Time.deltaTime);
+
+        _anim.SetBool("Moving", _vel.magnitude > 0);
     }
 
 }
